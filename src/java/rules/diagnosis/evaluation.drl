@@ -1,0 +1,1012 @@
+/*
+ * Copyright 2010 Red Hat, Inc. and/or its affiliates.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * Author: Alberto Gil de la Fuente
+ */
+
+
+import diagnosis.Patient
+
+
+rule "Losartan"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("heart failure"), age != Age.CHILD,pregnant == false,
+    !medicines.contains("Hypersensitivity to Losartan"),!medicines.contains("medicines with aliskiren"), !comorbidity.contains("diabetes"), !comorbidity.contains("kidney malfunction"),!comorbidity.contains("severe liver failure"))
+
+then
+    p1.setTreatments("losartan");
+    System.out.println("Losartan is the best treatment for the patient");
+end
+rule "Losartan2"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("high blood pressure"), age != Age.CHILD, pregnant == false, 
+    !medicines.contains("Hypersensitivity to Losartan"),!medicines.contains("medicines with aliskiren"), !comorbidity.contains("diabetes"), !comorbidity.contains("kidney malfunction"),!comorbidity.contains("severe liver failure"))
+
+then
+    p1.setTreatments("losartan");
+    System.out.println("Losartan is the best treatment for the patient");
+end
+rule "Olmeosartan"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("high blood pressure"), age != Age.CHILD, pregnant == false, 
+    !medicines.contains("Hypersensitivity to Olmesartan"),!medicines.contains("medicines with aliskiren"), !comorbidity.contains("diabetes"), !comorbidity.contains("kidney malfunction"),!comorbidity.contains("jaundice"),!comorbidity.contains("biliary obstruction"))
+
+then
+    p1.setTreatments("Olmeosartan");
+    System.out.println("Olmeosartan is the best treatment for the patient");
+end
+rule "Olmeosartan2"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("heart failure"), age != Age.CHILD, pregnant == false, 
+    !medicines.contains("Hypersensitivity to Olmesartan"),!medicines.contains("medicines with aliskiren"), !comorbidity.contains("diabetes"), !comorbidity.contains("kidney malfunction"),!comorbidity.contains("jaundice"),!comorbidity.contains("biliary obstruction"))
+
+then
+    p1.setTreatments("Olmeosartan");
+    System.out.println("Olmeosartan is the best treatment for the patient");
+end
+rule "Telmisartan"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("heart failure"), age != Age.CHILD, age != Age.YOUNG, pregnant == false,
+    !medicines.contains("angiotensin converting enzyme (ACE) inhibitor"),!medicines.contains("medicines with aliskiren"), !comorbidity.contains("diabetes"), !comorbidity.contains("kidney malfunction"),!comorbidity.contains("liver disease"))
+
+then
+    p1.setTreatments("Telmisartan");
+    System.out.println("Telmisartan is the best treatment for the patient");
+end
+rule "Telmisartan2"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("high blood pressure"), age != Age.CHILD, age != Age.YOUNG, pregnant == false,
+    !medicines.contains("angiotensin converting enzyme (ACE) inhibitor"),!medicines.contains("medicines with aliskiren"), !comorbidity.contains("diabetes"), !comorbidity.contains("kidney malfunction"),!comorbidity.contains("liver disease"))
+
+then
+    p1.setTreatments("Telmisartan");
+    System.out.println("Telmisartan is the best treatment for the patient");
+end
+rule "Valsartan"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("heart failure"), age != Age.CHILD, pregnant == false,
+    !medicines.contains("Hypersensitivity to simvastatin"),!medicines.contains("medicines with aliskiren"), !comorbidity.contains("diabetes"), !comorbidity.contains("kidney malfunction"),!comorbidity.contains("liver disease"))
+
+then
+    p1.setTreatments("Valsartan");
+    System.out.println("Valsartan is the best treatment for the patient");
+end
+rule "Valsartan2"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("high blood pressure"), age != Age.CHILD, pregnant == false,
+    !medicines.contains("Hypersensitivity to simvastatin"),!medicines.contains("medicines with aliskiren"), !comorbidity.contains("diabetes"), !comorbidity.contains("kidney malfunction"),!comorbidity.contains("liver disease"))
+
+then
+    p1.setTreatments("Valsartan");
+    System.out.println("Valsartan is the best treatment for the patient");
+end
+rule "Apixaban"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("clots"), age != Age.CHILD, age != Age.YOUNG,age != Age.ELDER, pregnant == false,
+    !medicines.contains("Hypersensitivity to apixaban"),!medicines.contains("medicines to prevent blood clotting"), !comorbidity.contains("bleed excessively"), !comorbidity.contains("disease in a body organ"),!comorbidity.contains("recent/active ulcer"),!comorbidity.contains("recent brain bleed"),!comorbidity.contains("liver disease"))
+
+then
+    p1.setTreatments("Apixaban");
+    System.out.println("Apixaban is the best treatment for the patient");
+end
+rule "Dabigatran"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("clots"), age != Age.YOUNG,age != Age.ADULT, pregnant == false,
+    !medicines.contains("Hypersensitivity to dabigatran"), !comorbidity.contains("bleeding problems "), !comorbidity.contains("stomach ulcer"),!comorbidity.contains("kidney disease"),!comorbidity.contains("heart valve replaced"))
+
+then
+    p1.setTreatments("Dabigatran");
+    System.out.println("Dabigatran is the best treatment for the patient");
+end
+rule "Edoxaban"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("clots"), age != Age.YOUNG,age != Age.CHILD, pregnant == false,
+    !medicines.contains("Hypersensitivity to edoxaban"),!medicines.contains("amiodarone"),!medicines.contains("atorvastatin"),!medicines.contains("cyclosporine"),!medicines.contains("digoxin"),!medicines.contains("erythromycin"),!medicines.contains("esomeprazole"),!medicines.contains("ketoconazole"),!medicines.contains("quinidine"),!medicines.contains("rifampin"),!medicines.contains("amiodarone "),!medicines.contains("escitalopram"),!medicines.contains("fluoxetine"),!medicines.contains("fluvoxamine"),
+    !medicines.contains("paroxetine"),!medicines.contains("sertraline"),!medicines.contains("serotonin-norepinephrine reuptake inhibitors (SNRIs)"),!medicines.contains("duloxetine"),!medicines.contains("levomilnacipran"),!medicines.contains("milnacipran"),!medicines.contains("venlafaxine"),!medicines.contains("verapamil "), !comorbidity.contains("heavy bleeding"), !comorbidity.contains("mechanical heart valve"),!comorbidity.contains("stomach cancer"),!comorbidity.contains("liver disease"),!comorbidity.contains("antiphospholipid syndrome"))
+
+then
+    p1.setTreatments("Edoxaban");
+    System.out.println("Edoxaban is the best treatment for the patient");
+end
+rule "Heparin"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("clots"), age != Age.YOUNG,age != Age.CHILD, pregnant == false,
+    !medicines.contains("Hypersensitivity to heparin"),!medicines.contains("allergic to beef or pork"),!comorbidity.contains("low platelets"), !comorbidity.contains("heart attack"),!comorbidity.contains("hemophilia"),!comorbidity.contains("cancer"))
+
+then
+    p1.setTreatments("Heparin");
+    System.out.println("Heparin is the best treatment for the patient");
+end
+rule "Rivaroxaban"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("clots"), age != Age.YOUNG,age != Age.CHILD, pregnant == false,
+    !medicines.contains("Hypersensitivity to rivaroxaban"),
+!medicines.contains("warfarin"),!medicines.contains("dabigatran"),
+!medicines.contains("apixaban"),!medicines.contains(" heparin"),
+!comorbidity.contains("bleed excessively"), 
+!comorbidity.contains("liver disease"))
+
+then
+    p1.setTreatments("Rivaroxaban");
+    System.out.println("Rivaroxaban is the best treatment for the patient");
+end
+rule "aspirine"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("myocardial infarction"), age != Age.CHILD, pregnant == false,
+    !medicines.contains("treatment with methotrexate"),!comorbidity.contains("acute gastroduodenal ulcer"), 
+    !comorbidity.contains("asma"), !comorbidity.contains("mastocytosis"), 
+    !comorbidity.contains("coagulation disorders"))
+
+then
+    p1.setTreatments("Aspirine");
+    System.out.println("Aspirine is the best treatment for the patient");
+end
+
+
+rule "clopidrogel"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("myocardial infarction"),
+    !medicines.contains("hypersensitivity to clopidrogel"),
+    !comorbidity.contains("Severe liver failure"), !comorbidity.contains("Active pathologic bleeding")) 
+ 
+
+then
+    p1.setTreatments("Clopidrogel");
+    System.out.println("Clopidrogel is the best treatment for the patient");
+end
+
+
+rule "dipiridamol"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("myocardial infarction"), pregnant == false,
+    !medicines.contains("hypersensitivity to dipyridamole"),
+    !medicines.contains("hereditary fructose intolerance"),
+    !medicines.contains("impaired glucose absorption"),
+    !medicines.contains("impaired galactose absorption"),
+    !medicines.contains("sucrose-isomaltase insufficiency"))
+  
+ 
+
+then
+    p1.setTreatments("dipiridamol");
+    System.out.println("Dipiridamol is the best treatment for the patient");
+end
+
+
+rule "prasugrel"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("myocardial infarction"), age != Age.ELDER, pregnant == false,
+    !medicines.contains("hypersensitivity acetylsalicylic acid"),
+    !medicines.contains("hypersensitivity to Prasugrel Virfuton"),
+    !medicines.contains("hereditary galactose intolerance"),
+    !medicines.contains("impaired glucose absorption"),
+    !medicines.contains("impaired galactose absorption"),
+    !medicines.contains("total lactase deficiency  "),
+    !medicines.contains("hereditary fructose intolerance"),
+    !medicines.contains("sucrose-isomaltase insufficiency"),
+    !comorbidity.contains("active pathologic bleeding"), 
+    !comorbidity.contains("stroke"), !comorbidity.contains("transient ischemic attack"), 
+    !comorbidity.contains("Severe liver failure"))
+
+then
+    p1.setTreatments("prasugrel");
+    System.out.println("prasugrel is the best treatment for the patient");
+end
+
+
+
+rule "ticagrelor"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("myocardial infarction"), pregnant == false,
+    !medicines.contains("hypersensitivity ticagrelor"),
+    !medicines.contains("strong CYP3A4 inhibitors"),
+    !comorbidity.contains("active pathologic bleeding"), 
+    !comorbidity.contains("intracranial hemorrhage"), 
+    !comorbidity.contains("Severe liver failure"))
+
+then
+    p1.setTreatments("ticagrelor");
+    System.out.println("Ticagrelor is the best treatment for the patient");
+end
+
+rule "Benazepril"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("myocardial infarction"), age != Age.CHILD, pregnant == false,
+    !medicines.contains("taking sacubitril"), !medicines.contains("allergy to ACE inhibitor"),
+    !comorbidity.contains("Diabetes"), !comorbidity.contains("angioedema"), 
+    !comorbidity.contains("kydney disease"))
+
+then
+    p1.setTreatments("Benazepril");
+    System.out.println("Benazepril is the best treatment for the patient");
+end
+
+
+rule "Benazepril2"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("stroke"), age != Age.CHILD, pregnant == false,
+    !medicines.contains("taking sacubitril"), !medicines.contains("allergy to ACE inhibitor"),
+    !comorbidity.contains("Diabetes"), !comorbidity.contains("angioedema"), 
+    !comorbidity.contains("kydney disease")) 
+
+then
+    p1.setTreatments("Benazepril");
+    System.out.println("Benazepril is the best treatment for the patient");
+end
+
+
+rule "Captopril"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("myocardial infarction"), age != Age.CHILD, pregnant == false,
+    !medicines.contains("taking sacubitril"), !medicines.contains("High blood pressure drugs"),
+    !medicines.contains("Diuretics"),!medicines.contains("Potassium supplements"),
+    !medicines.contains("potassium-based salts"),!medicines.contains("Mood stabilizers"),
+    !medicines.contains("Pain drugs"), !medicines.contains("Drugs to prevent organ transplant rejection"),
+    !medicines.contains("Captopril"),
+    !comorbidity.contains("kidney disease"))
+
+then
+    p1.setTreatments("Captopril");
+    System.out.println("Captopril is the best treatment for the patient");
+end
+
+
+rule "Enalapril"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("myocardial infarction"), age != Age.CHILD, pregnant == false,
+    !medicines.contains("anesthetic,"),!medicines.contains(" pain drugs"),!medicines.contains("heart and blood pressure drugs"),
+    !medicines.contains("potassium supplements"),!medicines.contains("diuretics"), !medicines.contains("lithium"),
+    !medicines.contains("Drugs used to prevent rejection of an organ transplant"),!medicines.contains("neprilysin inhibitors"),
+    !comorbidity.contains("hypotension"), !comorbidity.contains("algiodema"), 
+    !comorbidity.contains("kydney disease"))
+
+then
+    p1.setTreatments("Enalapril");
+    System.out.println("Enalapril is the best treatment for the patient");
+end
+
+
+rule "Iosartan"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("myocardial infarction"), age != Age.CHILD, pregnant == false,
+    !medicines.contains("electrolyte imbalance"),!medicines.contains("low-salt diet"),
+    !medicines.contains("dehydrated"),!comorbidity.contains("diabetes"), 
+    !comorbidity.contains("kidney disease"), !comorbidity.contains("liver disease"), 
+    !comorbidity.contains("heart failure"))
+
+then
+    p1.setTreatments("Iosartan");
+    System.out.println("Iosartan is the best treatment for the patient");
+end
+
+rule "Heparin3"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("myocardial infarction"), pregnant == false,
+    !medicines.contains("blood thinner "),!comorbidity.contains("bacterial endocarditis"), 
+    !comorbidity.contains("hypertension"), !comorbidity.contains("bleeding, blood clotting disorder"), 
+    !comorbidity.contains("liver disease"))
+
+then
+    p1.setTreatments("Heparin");
+    System.out.println("Heparin is the best treatment for the patient");
+end
+
+
+rule "Lisinopril"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("myocardial infarction"), age != Age.CHILD, pregnant == false,
+    !medicines.contains("aliskiren, sacubitril, fluid imbalances"),!medicines.contains("sacubitril"),
+    !medicines.contains("fluid imbalances") ,!comorbidity.contains("hypertrophic cardiomyopath"), 
+    !comorbidity.contains("syndrome of inappropriate antidiuretic hormone"), !comorbidity.contains("renal artery stenosis"), 
+    !comorbidity.contains("hypotension"),!comorbidity.contains("kidney problems"), !comorbidity.contains("angiodema"), 
+    !comorbidity.contains("collagen vascular disease"))
+
+then
+    p1.setTreatments("Lisinopril");
+    System.out.println("Lisinopril is the best treatment for the patient");
+end
+
+
+rule "Ramipril "
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("myocardial infarction"), pregnant == false,
+    !medicines.contains("allergy to ACE inhibitors, anti-inflammatory medicines, asthma, diuretics, steroid, procainamide, racecadotril, lithium"), 
+    !medicines.contains("anti-inflammatory medicines"), !medicines.contains("asthma"), !medicines.contains("diuretics"), 
+    !medicines.contains("steroid, "), !medicines.contains("procainamide"), !medicines.contains("racecadotril"), !medicines.contains("lithium"), 
+    !comorbidity.contains("angiodema"), !comorbidity.contains("diabetes"))
+
+then
+    p1.setTreatments("Ramipril ");
+    System.out.println("Ramipril is the best treatment for the patient");
+end
+
+
+rule "Olmesartan3"
+    //salience 15
+    dialect "java"
+    when
+    p1: Patient  (disease.equals("heart attack "), age != Age.CHILD, pregnant == false,
+    !medicines.contains("aliskiren"),!medicines.contains("medicines to lower blood pressure"),
+    !medicines.contains("ACE inhibitor"),!medicines.contains("non-steroidal anti-inflammatory drugs"),
+    !medicines.contains(" diuretics"),!medicines.contains("lithium, heparin"),
+    !medicines.contains("heparin"), !medicines.contains("spironolactone"),
+    !medicines.contains("colesevelam"),
+    !comorbidity.contains("diabetes"), 
+    !comorbidity.contains("heart failure"), !comorbidity.contains("kidney disease"), 
+    !comorbidity.contains("electrolyte imbalance"))
+
+then
+    p1.setTreatments("Olmesartan ");
+    System.out.println("Olmesartan  is the best treatment for the patient");
+end
+rule "fluvastatin"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("cholesterol"), age != Age.ADULT, age != Age.ELDER,
+    	!medicines.contains("fluvastatin"),!medicines.contains("warfarin"), !medicines.contains("cimetidine"), !medicines.contains("colchicine"), !medicines.contains("cyclosporine"), !medicines.contains("diclofenac"), !medicines.contains("digoxin"), !medicines.contains("erythromycin"),
+	!medicines.contains("fluconazole"), !medicines.contains("glyburide"), !medicines.contains("ketoconazole"), !medicines.contains("omeprazole"),!comorbidity.contains("coronary heart diseas"),
+	!comorbidity.contains("stroke"), !comorbidity.contains("peripheral vascular disease"), !comorbidity.contains("diabetes"), !comorbidity.contains("high blood pressure"))
+
+then
+    p1.setTreatments("fluvastatin");
+    System.out.println("Fluvastatin is the best treatment for the patient");
+end
+
+rule "pitavastatin"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("cholesterol"), age != Age.CHILD, age != Age.YOUNG,
+    	!medicines.contains("pitavastatin"),!medicines.contains("cyclosporine"), !medicines.contains("fenofibrate"), !medicines.contains("erythromycin"), !medicines.contains("gemfibrozil"), !medicines.contains("niacin"), !medicines.contains("Niacor"), !medicines.contains("Nrifampicin"),
+	!medicines.contains("ritonavir"), !medicines.contains("warfarin"), !comorbidity.contains("thyroid disease"),
+	!comorbidity.contains("diabetes"), !comorbidity.contains("liver disease"), !comorbidity.contains("kidney disease"), !comorbidity.contains("obesity"))
+
+then
+    p1.setTreatments("pitavastatin");
+    System.out.println("Pitavastatin is the best treatment for the patient");
+end
+
+rule "pravastatin"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("cholesterol"), age != Age.ADULT, age != Age.ELDER,
+    	!medicines.contains("pravastatin"),!medicines.contains("antacids"), !medicines.contains("fluconazole"), !medicines.contains("ketoconazole"), !medicines.contains("boceprevir"), !medicines.contains("cimetidine"), !medicines.contains("colchicine"), !medicines.contains("cyclosporine"),
+	!medicines.contains("digoxin"), !medicines.contains("diltiazem"), !medicines.contains("diltiazem"), !medicines.contains("erythromycin"), !medicines.contains("warfarin"), !comorbidity.contains("coronary heart disease"),
+	!comorbidity.contains("stroke"), !comorbidity.contains("peripheral vascular disease"), !comorbidity.contains("diabetes"), !comorbidity.contains("high blood pressure"))
+
+then
+    p1.setTreatments("pravastatin");
+    System.out.println("Pravastatin is the best treatment for the patient");
+end
+
+rule "azilsartan"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("hypertension"), age != Age.CHILD, age != Age.YOUNG,
+    	!medicines.contains("azilsartan"),!medicines.contains("aliskiren"), !medicines.contains("benazepril"), !medicines.contains("captopril"), !medicines.contains("enalapril"), !medicines.contains("fosinopril"), !medicines.contains("lisinopril"), !medicines.contains("moexipril"),
+	!medicines.contains("perindopril"), !medicines.contains("trandolapril"), !medicines.contains("aspirin"), !medicines.contains("ibuprofen"), !medicines.contains("naproxen"), !comorbidity.contains("coronary artery disease"),
+	!comorbidity.contains("stroke"), !comorbidity.contains("heart failure"), !comorbidity.contains("chronic kidney disease"), !comorbidity.contains("chronic obstructive pulmonary disease"))
+
+then
+    p1.setTreatments("azilsartan");
+    System.out.println("Azilsartan is the best treatment for the patient");
+end
+
+rule "eprosartan"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("hypertension"), age != Age.CHILD, age != Age.YOUNG,
+    	!medicines.contains("eprosartan"),!medicines.contains("aliskiren"), !medicines.contains("benazepril"), !medicines.contains("captopril"), !medicines.contains("enalapril"), !medicines.contains("fosinopril"), !medicines.contains("lisinopril"), !medicines.contains("moexipril"),
+	!medicines.contains("perindopril"), !medicines.contains("trandolapril"), !medicines.contains("aspirin"), !medicines.contains("ibuprofen"), !medicines.contains("naproxen"), !comorbidity.contains("diabetes"),
+	!comorbidity.contains("obesity"), !comorbidity.contains("hyperlipidemia"), !comorbidity.contains("metabolic syndrome"), !comorbidity.contains("chronic obstructive pulmonary disease"))
+
+then
+    p1.setTreatments("eprosartan");
+    System.out.println("Eprosartan is the best treatment for the patient");
+end
+
+rule "candesartan"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("hypertension"), age != Age.ADULT, age != Age.ELDER,
+    	!medicines.contains("candesartan"),!medicines.contains("aliskiren"), !medicines.contains("benazepril"), !medicines.contains("captopril"), !medicines.contains("enalapril"), !medicines.contains("fosinopril"), !medicines.contains("lisinopril"), !medicines.contains("moexipril"),
+	!medicines.contains("perindopril"), !medicines.contains("trandolapril"), !medicines.contains("aspirin"), !medicines.contains("ibuprofen"), !medicines.contains("naproxen"), !medicines.contains("diuretics"), !comorbidity.contains("diabetes"),
+	!comorbidity.contains("renal insuffiency"), !comorbidity.contains("central apnea syndrom"), !comorbidity.contains("anemia"), !comorbidity.contains("chronic obstructive pulmonary disease"))
+
+then
+    p1.setTreatments("candesartan");
+    System.out.println("Candesartan is the best treatment for the patient");
+end
+
+rule "digoxin1"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("heart failure"), age != Age.CHILD,
+    !medicines.contains("diuretics"),!medicines.contains("corticosteroids"), !medicines.contains("antidepressants"), !comorbidity.contains("allergic to glycosides"),
+!comorbidity.contains("Stokes-Adams"), !comorbidity.contains("Wolf-Parkinson-White"), !comorbidity.contains("obstructive cardiomyopathy"))
+
+then
+    p1.setTreatments("digoxin");
+    System.out.println("Digoxin is the best treatment for the patient");
+end
+
+rule "digoxin2"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("arrythmia"), age != Age.CHILD,
+    !medicines.contains("diuretics"),!medicines.contains("corticosteroids"), !medicines.contains("antidepressants"), !comorbidity.contains("allergic to glycosides"),
+!comorbidity.contains("Stokes-Adams"), !comorbidity.contains("Wolf-Parkinson-White"), !comorbidity.contains("obstructive cardiomyopathy"))
+
+then
+    p1.setTreatments("digoxin");
+    System.out.println("Digoxin is the best treatment for the patient");
+end
+
+
+rule "nitrostat1"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("angina pectoris"), age != Age.CHILD,
+    !medicines.contains("viagra"),!medicines.contains("cialis"), !medicines.contains("levitra"), !medicines.contains("adempas"), !comorbidity.contains("allergic to nitrates"),
+!comorbidity.contains("recent heart attack"), !comorbidity.contains("anemia"), !comorbidity.contains("increases pressure in the head"))
+
+then
+    p1.setTreatments("nitroglycerin(nitrostat)");
+    System.out.println("Nitroglycerin nitrostat is the best treatment for the patient");
+end
+
+
+
+rule "idodril1"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("angina pectoris"), age != Age.CHILD, age !=Age.YOUNG,
+    !medicines.contains("noradrenaline"),!medicines.contains("acetylcholine"), !medicines.contains("tricyclic"), !comorbidity.contains("allergic to nitrates"),
+!comorbidity.contains("low blood pressure"), !comorbidity.contains("anemia"), !comorbidity.contains("increases pressure in the head"), !comorbidity.contains("hemorrhage"))
+
+then
+    p1.setTreatments("isosorbide dinitrate(isodril)");
+    System.out.println("Isosorbide dinitrate (isodril) is the best treatment for the patient");
+end
+
+rule "idodril2"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("heart failure"), age != Age.CHILD, age !=Age.YOUNG,
+    !medicines.contains("noradrenaline"),!medicines.contains("acetylcholine"), !medicines.contains("tricyclic"), !comorbidity.contains("allergic to nitrates"),
+!comorbidity.contains("low blood pressure"), !comorbidity.contains("anemia"), !comorbidity.contains("increases pressure in the head"), !comorbidity.contains("hemorrhage"))
+
+then
+    p1.setTreatments("isosorbide dinitrate(isodril)");
+    System.out.println("Isosorbide dinitrate (isodril) is the best treatment for the patient");
+end
+
+
+rule "acebutolol1"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("angina pectoris"), age != Age.CHILD, age !=Age.YOUNG,
+    !medicines.contains("clonidine"),!medicines.contains("verapamil"), !medicines.contains("insulin"),!medicines.contains("NSAIDs"), !medicines.contains("antipsychotic"),!comorbidity.contains("low heartbeat"),
+!comorbidity.contains("low blood pressure"), !comorbidity.contains("tumor on adrenal gland"), !comorbidity.contains("asthma"))
+
+then
+    p1.setTreatments("acebutolol");
+    System.out.println("Acebutolol is the best treatment for the patient");
+end
+
+rule "acebutolol2"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("high blood pressure"), age != Age.CHILD, age !=Age.YOUNG,
+    !medicines.contains("clonidine"),!medicines.contains("verapamil"), !medicines.contains("insulin"),!medicines.contains("NSAIDs"), !medicines.contains("antipsychotic"),!comorbidity.contains("low heartbeat"),
+!comorbidity.contains("low blood pressure"), !comorbidity.contains("tumor on adrenal gland"), !comorbidity.contains("asthma"))
+
+then
+    p1.setTreatments("acebutolol");
+    System.out.println("Acebutolol is the best treatment for the patient");
+end
+
+rule "acebutolol3"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("arrythmia"), age != Age.CHILD, age !=Age.YOUNG,
+    !medicines.contains("clonidine"),!medicines.contains("verapamil"), !medicines.contains("insulin"),!medicines.contains("NSAIDs"), !medicines.contains("antipsychotic"),!comorbidity.contains("low heartbeat"),
+!comorbidity.contains("low blood pressure"), !comorbidity.contains("tumor on adrenal gland"), !comorbidity.contains("asthma"))
+
+then
+    p1.setTreatments("acebutolol");
+    System.out.println("Acebutolol is the best treatment for the patient");
+end
+
+
+rule "atenolol1"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("angina pectoris"), age != Age.CHILD, 
+    !medicines.contains("clonidine"),!medicines.contains("verapamil"), !medicines.contains("insulin"),!medicines.contains("digoxin"), !medicines.contains("ibuprofen"),!comorbidity.contains("heart blockage"),
+!comorbidity.contains("acidosis"), !comorbidity.contains("tumor on adrenal gland"), !comorbidity.contains("asthma"))
+
+then
+    p1.setTreatments("atenolol");
+    System.out.println("Atenolol is the best treatment for the patient");
+end
+
+rule "atenolol2"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("high blood pressure"), age != Age.CHILD, 
+    !medicines.contains("clonidine"),!medicines.contains("verapamil"), !medicines.contains("insulin"),!medicines.contains("digoxin"), !medicines.contains("ibuprofen"),!comorbidity.contains("heart blockage"),
+!comorbidity.contains("acidosis"), !comorbidity.contains("tumor on adrenal gland"), !comorbidity.contains("asthma"))
+
+then
+    p1.setTreatments("atenolol");
+    System.out.println("Atenolol is the best treatment for the patient");
+end
+
+rule "atenolol3"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("arrythmia"), age != Age.CHILD, 
+    !medicines.contains("clonidine"),!medicines.contains("verapamil"), !medicines.contains("insulin"),!medicines.contains("digoxin"), !medicines.contains("ibuprofen"),!comorbidity.contains("heart blockage"),
+!comorbidity.contains("acidosis"), !comorbidity.contains("tumor on adrenal gland"), !comorbidity.contains("asthma"))
+
+then
+    p1.setTreatments("atenolol");
+    System.out.println("Atenolol is the best treatment for the patient");
+end
+
+rule "atenolol4"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("infarction"), age != Age.CHILD, 
+    !medicines.contains("clonidine"),!medicines.contains("verapamil"), !medicines.contains("insulin"),!medicines.contains("digoxin"), !medicines.contains("ibuprofen"),!comorbidity.contains("heart blockage"),
+!comorbidity.contains("acidosis"), !comorbidity.contains("tumor on adrenal gland"), !comorbidity.contains("asthma"))
+
+then
+    p1.setTreatments("atenolol");
+    System.out.println("Atenolol is the best treatment for the patient");
+end
+
+
+
+rule "bisoprolol1"
+    //salience 15
+    dialect "java"
+when
+    p1: Patient  (disease.equals("heart failure"), age != Age.CHILD, pregnant == false,
+!medicines.contains("clonidine"),!medicines.contains("verapamil"), !medicines.contains("insulin"),!medicines.contains("digoxin"), !medicines.contains("ibuprofen"),!comorbidity.contains("allergic to bisoprolol fumarate"),
+!comorbidity.contains("circulation problems"), !comorbidity.contains("asthma"))
+
+then
+    p1.setTreatments("bisoprolol");
+    System.out.println("Bisoprolol is the best treatment for the patient");
+end
+
+
+rule "nadolol1"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("angina pectoris"), age != Age.CHILD, pregnant == false,
+    !medicines.contains("verapamil"), !medicines.contains("insulin"),!medicines.contains("adrenaline"), !medicines.contains("ibuprofen"),!comorbidity.contains("diabetes"),
+!comorbidity.contains("bronchitis"), !comorbidity.contains("emphysema"), !comorbidity.contains("kidney failure"), !comorbidity.contains("liver failure"))
+
+then
+    p1.setTreatments("nadolol");
+    System.out.println("Nadolol is the best treatment for the patient");
+end
+
+rule "nadolol2"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("high blood pressure"), age != Age.CHILD, pregnant == false,
+    !medicines.contains("verapamil"), !medicines.contains("insulin"),!medicines.contains("adrenaline"), !medicines.contains("ibuprofen"),!comorbidity.contains("diabetes"),
+!comorbidity.contains("bronchitis"), !comorbidity.contains("emphysema"), !comorbidity.contains("kidney failure"), !comorbidity.contains("liver failure"))
+
+then
+    p1.setTreatments("nadolol");
+    System.out.println("Nadolol is the best treatment for the patient");
+end
+rule "warfarin"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("myocardial infarction"), age != Age.CHILD, pregnant == false,
+    	!medicines.contains("salicylates"),!medicines.contains("sulphonamides"), !medicines.contains("hypoglycaemics"), !medicines.contains("barbiturate"), !medicines.contains("contraceptives"),
+	!comorbidity.contains("Vitamin K deficiency"),!comorbidity.contains("Peptic ulcer"),!comorbidity.contains("Haemophilia"),!comorbidity.contains("Anaemia"),!comorbidity.contains("Hypertension"),
+	!comorbidity.contains("Pericarditis"), !comorbidity.contains("Bacterial endocarditis"), !comorbidity.contains("Severe hepatic insufficiency"), !comorbidity.contains("Renal insufficiency"))
+
+then
+    p1.setTreatments("warfarin");
+    System.out.println("Warfarin is the best treatment for the patient");
+end
+
+rule "warfarin2"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals(" "), age != Age.CHILD,
+    	!medicines.contains("salicylates"),!medicines.contains("sulphonamides"), !medicines.contains("hypoglycaemics"), !medicines.contains("barbiturate"), !medicines.contains("contraceptives"),
+	!comorbidity.contains("vitamin k deficiency"),!comorbidity.contains("peptic ulcer"),!comorbidity.contains("haemophilia"),!comorbidity.contains("anaemia"),!comorbidity.contains("hypertension"),
+	!comorbidity.contains("pericarditis"), !comorbidity.contains("bacterial endocarditis"), !comorbidity.contains("severe hepatic insufficiency"), !comorbidity.contains("renal insufficiency"))
+
+then
+    p1.setTreatments("warfarin");
+    System.out.println("Warfarin is the best treatment for the patient");
+end
+
+rule "enoxaparin"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("myocardial infarction"), age != Age.CHILD, pregnant == false,
+    	!medicines.contains("warfarin"),!medicines.contains("aspirin"), !medicines.contains("ibuprofen"), !medicines.contains("naproxen"), !medicines.contains("non-steroidal anti-inflammatory drug"),
+	!comorbidity.contains("hypersensitivity to enoxaparin"),!comorbidity.contains("haemorrhage"),!comorbidity.contains("thrombocytopenia"),!comorbidity.contains("thrombosis"),
+	!comorbidity.contains("septic endocarditis"))
+
+then
+    p1.setTreatments("enoxaparin");
+    System.out.println("Enoxaparin is the best treatment for the patient");
+end
+
+rule "metropolol"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("hypertension"), age != Age.CHILD,
+    	!medicines.contains("betablockers"),!medicines.contains("reserpine"), !medicines.contains("nitroglycerin"), !medicines.contains("antihyperensives"), !medicines.contains("calthium antagonists"),
+	!medicines.contains("antirhymics"),!medicines.contains("quinidine"),!medicines.contains("amiodarone"),!medicines.contains("cimetidine"),!comorbidity.contains("sinus bradycardia"),
+        !comorbidity.contains("first-degree major AV block"),!comorbidity.contains("cardiogenic shock"),!comorbidity.contains("heart failure"),!comorbidity.contains("altered liver function"))
+
+then
+    p1.setTreatments("metropolol");
+    System.out.println("Metropolol is the best treatment for the patient");
+end
+
+rule "metropolol2"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("angina"), age != Age.CHILD,
+    	!medicines.contains("betablockers"),!medicines.contains("reserpine"), !medicines.contains("nitroglycerin"), !medicines.contains("antihyperensives"), !medicines.contains("calthium antagonists"),
+	!medicines.contains("antirhymics"),!medicines.contains("quinidine"),!medicines.contains("amiodarone"),!medicines.contains("cimetidine"),!comorbidity.contains("sinus bradycardia"),
+        !comorbidity.contains("first-degree major AV block"),!comorbidity.contains("cardiogenic shock"),!comorbidity.contains("heart failure"),!comorbidity.contains("altered liver function"))
+
+then
+    p1.setTreatments("metropolol");
+    System.out.println("Metropolol is the best treatment for the patient");
+end
+
+rule "metropolol3"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("arrythmias"), age != Age.CHILD,
+    	!medicines.contains("betablockers"),!medicines.contains("reserpine"), !medicines.contains("nitroglycerin"), !medicines.contains("antihyperensives"), !medicines.contains("calthium antagonists"),
+	!medicines.contains("antirhymics"),!medicines.contains("quinidine"),!medicines.contains("amiodarone"),!medicines.contains("cimetidine"),!comorbidity.contains("sinus bradycardia"),
+        !comorbidity.contains("first-degree major AV block"),!comorbidity.contains("cardiogenic shock"),!comorbidity.contains("heart failure"),!comorbidity.contains("altered liver function"))
+
+then
+    p1.setTreatments("metropolol");
+    System.out.println("Metropolol is the best treatment for the patient");
+end
+
+rule "metropolol4"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("myocardial infarction"), age != Age.CHILD,
+    	!medicines.contains("betablockers"),!medicines.contains("reserpine"), !medicines.contains("nitroglycerin"), !medicines.contains("antihyperensives"), !medicines.contains("calthium antagonists"),
+	!medicines.contains("antirhymics"),!medicines.contains("quinidine"),!medicines.contains("amiodarone"),!medicines.contains("cimetidine"),!comorbidity.contains("sinus bradycardia"),
+        !comorbidity.contains("first-degree major AV block"),!comorbidity.contains("cardiogenic shock"),!comorbidity.contains("heart failure"),!comorbidity.contains("altered liver function"))
+
+then
+    p1.setTreatments("metropolol");
+    System.out.println("Metropolol is the best treatment for the patient");
+end
+
+rule "labetalol"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("angina"),
+    	!medicines.contains("halothane"),!medicines.contains("anaesthetics"), !medicines.contains("class I antiarrythmic agents"), !medicines.contains("calcium antagonists"), !medicines.contains("tricyclic antidepressants"),
+	!medicines.contains("cimetidine"),!comorbidity.contains("aritroventricular block"),!comorbidity.contains("airway obstruction"), !comorbidity.contains("hypersensivity to labetalol"),!comorbidity.contains("peripheral vasoconstriction"),
+        !comorbidity.contains("cardiogenic shock"),!comorbidity.contains("hypertension"),!comorbidity.contains("severe bradicardia"),!comorbidity.contains("asthma"))
+
+then
+    p1.setTreatments("metropolol");
+    System.out.println("Metropolol is the best treatment for the patient");
+end
+
+rule "propanolol"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("angina"),
+    	!medicines.contains("cholestyramine"),!medicines.contains("colestipol"), !medicines.contains("warfarin"), !medicines.contains("antidepressant"), !medicines.contains("steroid"),
+	!medicines.contains("non-steroidalantiinflammatory drugs"),!medicines.contains("aspirine"),!medicines.contains("ibuprofen"),!medicines.contains("naproxen"),
+        !medicines.contains("calecoxib"),!medicines.contains("diclofenac"),!medicines.contains("indomethacin"),!medicines.contains("meloxicam"),!comorbidity.contains("hypersensitivity to propanolol"),
+        !comorbidity.contains("sick sinus node syndrome/sinus atrial node (SA) block"), !comorbidity.contains("bronchospasm"),!comorbidity.contains("bronchial asthma"),
+        !comorbidity.contains("chronic obsturctive pulmonary disease"),!comorbidity.contains("metabolic acidosis"),!comorbidity.contains("heart block"),!comorbidity.contains("hypoglycaemia"),
+        !comorbidity.contains("cardiogenic shock"),!comorbidity.contains("severe bradicardia"),!comorbidity.contains("severe hypotension"),!comorbidity.contains("severe peripheral"),!comorbidity.contains("arterial disorders"),
+        !comorbidity.contains("prinzmetal's angina"))
+
+then
+    p1.setTreatments("propanolol");
+    System.out.println("Propanolol is the best treatment for the patient");
+end
+
+rule "propanolol2"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("hypertension"),
+    	!medicines.contains("cholestyramine"),!medicines.contains("colestipol"), !medicines.contains("warfarin"), !medicines.contains("antidepressant"), !medicines.contains("steroid"),
+	!medicines.contains("non-steroidalantiinflammatory drugs"),!medicines.contains("aspirine"),!medicines.contains("ibuprofen"),!medicines.contains("naproxen"),
+        !medicines.contains("calecoxib"),!medicines.contains("diclofenac"),!medicines.contains("indomethacin"),!medicines.contains("meloxicam"),!comorbidity.contains("hypersensitivity to propanolol"),
+        !comorbidity.contains("sick sinus node syndrome/sinus atrial node (SA) block"), !comorbidity.contains("bronchospasm"),!comorbidity.contains("bronchial asthma"),
+        !comorbidity.contains("chronic obsturctive pulmonary disease"),!comorbidity.contains("metabolic acidosis"),!comorbidity.contains("heart block"),!comorbidity.contains("hypoglycaemia"),
+        !comorbidity.contains("cardiogenic shock"),!comorbidity.contains("severe bradicardia"),!comorbidity.contains("severe hypotension"),!comorbidity.contains("severe peripheral"),!comorbidity.contains("arterial disorders"),
+        !comorbidity.contains("prinzmetal's angina"))
+
+then
+    p1.setTreatments("propanolol");
+    System.out.println("Propanolol is the best treatment for the patient");
+end
+
+rule "propanolol3"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("hypertophic obstructive cardiomyopathy supraventricular cardiac arrythmia"),
+    	!medicines.contains("cholestyramine"),!medicines.contains("colestipol"), !medicines.contains("warfarin"), !medicines.contains("antidepressant"), !medicines.contains("steroid"),
+	!medicines.contains("non-steroidalantiinflammatory drugs"),!medicines.contains("aspirine"),!medicines.contains("ibuprofen"),!medicines.contains("naproxen"),
+        !medicines.contains("calecoxib"),!medicines.contains("diclofenac"),!medicines.contains("indomethacin"),!medicines.contains("meloxicam"),!comorbidity.contains("hypersensitivity to propanolol"),
+        !comorbidity.contains("sick sinus node syndrome/sinus atrial node (SA) block"), !comorbidity.contains("bronchospasm"),!comorbidity.contains("bronchial asthma"),
+        !comorbidity.contains("chronic obsturctive pulmonary disease"),!comorbidity.contains("metabolic acidosis"),!comorbidity.contains("heart block"),!comorbidity.contains("hypoglycaemia"),
+        !comorbidity.contains("cardiogenic shock"),!comorbidity.contains("severe bradicardia"),!comorbidity.contains("severe hypotension"),!comorbidity.contains("severe peripheral"),!comorbidity.contains("arterial disorders"),
+        !comorbidity.contains("prinzmetal's angina"))
+
+then
+    p1.setTreatments("propanolol");
+    System.out.println("Propanolol is the best treatment for the patient");
+end
+
+rule "propanolol4"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("ventricular cardiac arrhytmias"),
+    	!medicines.contains("cholestyramine"),!medicines.contains("colestipol"), !medicines.contains("warfarin"), !medicines.contains("antidepressant"), !medicines.contains("steroid"),
+	!medicines.contains("non-steroidalantiinflammatory drugs"),!medicines.contains("aspirine"),!medicines.contains("ibuprofen"),!medicines.contains("naproxen"),
+        !medicines.contains("calecoxib"),!medicines.contains("diclofenac"),!medicines.contains("indomethacin"),!medicines.contains("meloxicam"),!comorbidity.contains("hypersensitivity to propanolol"),
+        !comorbidity.contains("sick sinus node syndrome/sinus atrial node (SA) block"), !comorbidity.contains("bronchospasm"),!comorbidity.contains("bronchial asthma"),
+        !comorbidity.contains("chronic obsturctive pulmonary disease"),!comorbidity.contains("metabolic acidosis"),!comorbidity.contains("heart block"),!comorbidity.contains("hypoglycaemia"),
+        !comorbidity.contains("cardiogenic shock"),!comorbidity.contains("severe bradicardia"),!comorbidity.contains("severe hypotension"),!comorbidity.contains("severe peripheral"),!comorbidity.contains("arterial disorders"),
+        !comorbidity.contains("prinzmetal's angina"))
+
+then
+    p1.setTreatments("propanolol");
+    System.out.println("Propanolol is the best treatment for the patient");
+end
+
+rule "propanolol5"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("hyperthyroidism"),
+    	!medicines.contains("cholestyramine"),!medicines.contains("colestipol"), !medicines.contains("warfarin"), !medicines.contains("antidepressant"), !medicines.contains("steroid"),
+	!medicines.contains("non-steroidalantiinflammatory drugs"),!medicines.contains("aspirine"),!medicines.contains("ibuprofen"),!medicines.contains("naproxen"),
+        !medicines.contains("calecoxib"),!medicines.contains("diclofenac"),!medicines.contains("indomethacin"),!medicines.contains("meloxicam"),!comorbidity.contains("hypersensitivity to propanolol"),
+        !comorbidity.contains("sick sinus node syndrome/sinus atrial node (SA) block"), !comorbidity.contains("bronchospasm"),!comorbidity.contains("bronchial asthma"),
+        !comorbidity.contains("chronic obsturctive pulmonary disease"),!comorbidity.contains("metabolic acidosis"),!comorbidity.contains("heart block"),!comorbidity.contains("hypoglycaemia"),
+        !comorbidity.contains("cardiogenic shock"),!comorbidity.contains("severe bradicardia"),!comorbidity.contains("severe hypotension"),!comorbidity.contains("severe peripheral"),!comorbidity.contains("arterial disorders"),
+        !comorbidity.contains("prinzmetal's angina"))
+
+then
+    p1.setTreatments("propanolol");
+    System.out.println("Propanolol is the best treatment for the patient");
+end
+
+rule "propanolol6"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("thyrotoxicosis"),
+    	!medicines.contains("cholestyramine"),!medicines.contains("colestipol"), !medicines.contains("warfarin"), !medicines.contains("antidepressant"), !medicines.contains("steroid"),
+	!medicines.contains("non-steroidalantiinflammatory drugs"),!medicines.contains("aspirine"),!medicines.contains("ibuprofen"),!medicines.contains("naproxen"),
+        !medicines.contains("calecoxib"),!medicines.contains("diclofenac"),!medicines.contains("indomethacin"),!medicines.contains("meloxicam"),!comorbidity.contains("hypersensitivity to propanolol"),
+        !comorbidity.contains("sick sinus node syndrome/sinus atrial node (SA) block"), !comorbidity.contains("bronchospasm"),!comorbidity.contains("bronchial asthma"),
+        !comorbidity.contains("chronic obsturctive pulmonary disease"),!comorbidity.contains("metabolic acidosis"),!comorbidity.contains("heart block"),!comorbidity.contains("hypoglycaemia"),
+        !comorbidity.contains("cardiogenic shock"),!comorbidity.contains("severe bradicardia"),!comorbidity.contains("severe hypotension"),!comorbidity.contains("severe peripheral"),!comorbidity.contains("arterial disorders"),
+        !comorbidity.contains("prinzmetal's angina"))
+
+then
+    p1.setTreatments("propanolol");
+    System.out.println("Propanolol is the best treatment for the patient");
+end
+
+rule "amlodipine"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("blood vesel relaxant"), age != Age.CHILD, age != Age.YOUNG, pregnant == false,
+    	!medicines.contains("ketoconazole"),!medicines.contains("itraconazole"),!medicines.contains("ritonavir"),!medicines.contains("inidinavir"),
+        !medicines.contains("nelfinavir"),!medicines.contains("rifampcin"),!medicines.contains("rythromycin"),!medicines.contains("clarithromycin"),
+        !medicines.contains("diltiazem"),!medicines.contains("dantrolene"),!medicines.contains("tracolimus"),!medicines.contains("sirolimus"),
+        !medicines.contains("everolimus"),!medicines.contains("simvastatin"),!medicines.contains("cyclosporine"),!comorbidity.contains("severe hypotension"),
+        !comorbidity.contains("cardiogenic shock"), !comorbidity.contains("left ventricular ductus arteriosus obstruction"),!comorbidity.contains("haemodynamically unestable heart failure"))
+
+then
+    p1.setTreatments("amlodipine");
+    System.out.println("Amlodipine is the best treatment for the patient");
+end
+
+rule "diltiazem"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("high blood pressure"), age != Age.CHILD, pregnant == false,
+    	!medicines.contains("ivabradine"),!comorbidity.contains("hypersensitivity to diltiazem"),
+        !comorbidity.contains("diseased sinus node syndrome second or third degree atrioventricular (AV) block"), 
+        !comorbidity.contains("hypotension"),!comorbidity.contains("myocardial infarction"),!comorbidity.contains("congestive heart"),
+        !comorbidity.contains("severe bradycardia"),!comorbidity.contains("myocardial infarction"), !comorbidity.contains("cardiogenic shock"))
+
+then
+    p1.setTreatments("diltiazem");
+    System.out.println("Diltiazem is the best treatment for the patient");
+end
+
+rule "nitredipine"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("hypertension"), age != Age.CHILD, age != Age.YOUNG,
+    	!medicines.contains("hypersesitivity to nitredipine"),!medicines.contains("rifampicin"),!medicines.contains("antiepileptic"),
+        !medicines.contains("phenobarbital"),!medicines.contains("phenytoin"),!medicines.contains("carbamazepine"),!medicines.contains("notriptyline"),
+        !medicines.contains("fluoxetine"),!medicines.contains("zidovudine"),!medicines.contains("valporic acid"),!medicines.contains("cimetidine"),
+        !medicines.contains("quinupristine"),!medicines.contains("nfazodone"),!medicines.contains("azole antimycotics"),!medicines.contains("HIV protease inhibitors"),
+        !medicines.contains("antiepileptics"),!comorbidity.contains("severe heparic impairment"))
+
+then
+    p1.setTreatments("nitredipine");
+    System.out.println("Nitredipine is the best treatment for the patient");
+end
+
+rule "atorvastatin"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("infarction risk"), age != Age.CHILD, age != Age.YOUNG, pregnant == false,
+    	!medicines.contains("hypersesitivity to atorvastatin"),!medicines.contains("glacaprevir"),!medicines.contains("pibrentasvir"),
+        !medicines.contains("heptatitis C antivirals"))
+then
+    p1.setTreatments("atorvastatin");
+    System.out.println("Atorvastatin is the best treatment for the patient");
+end
+
+rule "cholestyramine"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("cholesterol"), pregnant == false,
+    	!medicines.contains("pills"),!medicines.contains("digoxin"),!medicines.contains("penicillin G"),
+        !medicines.contains("phenobarbital"),!medicines.contains("phenylbutazone"),!medicines.contains("propanolol"),!medicines.contains("spironolactone"),
+        !medicines.contains("tetracycline"))
+
+then
+    p1.setTreatments("cholestyramine");
+    System.out.println("Cholestyramine is the best treatment for the patient");
+end
+
+rule "ezetimbe"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("cholesterol"), pregnant == false,
+    	!medicines.contains("erythromycin"),!medicines.contains("clarithromycin"),!medicines.contains("telithromycin"),
+        !medicines.contains("HIV protease inhibitors"),!medicines.contains("boceprevir"),!medicines.contains("telaprevir"),!medicines.contains("nefazodone"),
+        !medicines.contains("cobicistat"),!medicines.contains("gemfibrozil"),!medicines.contains("cyclosporine"),!medicines.contains("danazol"),
+        !medicines.contains("lomitapide"),!comorbidity.contains("hypersensitivity to ezetimbe"),!comorbidity.contains("liver disease"),!comorbidity.contains("hipotyroidism"))
+
+then
+    p1.setTreatments("ezetimbe");
+    System.out.println("Ezetimbe is the best treatment for the patient");
+end
+
+rule "fenofibrate"
+    //salience 15
+    dialect "java"
+    when
+        p1: Patient  (disease.equals("cholesterol"), age != Age.CHILD, age != Age.YOUNG,
+    	!medicines.contains("stains"),!medicines.contains("colchicine"),!medicines.contains("rhabdomylysis"),
+        !comorbidity.contains("liver disease"),!comorbidity.contains("severe renal dysfunction"),!comorbidity.contains("preexisting gallblader disease"),
+        !comorbidity.contains("diabetes mellitus"), !comorbidity.contains("thyroid disorder"),!comorbidity.contains("renal disorder"))
+
+then
+    p1.setTreatments("fenofibrate");
+    System.out.println("Fenofibrate is the best treatment for the patient");
+end
